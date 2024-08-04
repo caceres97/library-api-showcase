@@ -35,14 +35,16 @@ model Author {
   id   String @id @default(auto()) @map("_id") @db.ObjectId
   name String
 
+  Book Book[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
-  Book      Book[]
 }
 
 model Book {
   id              String @id @default(auto()) @map("_id") @db.ObjectId
   title           String
+  description     String
   publicationYear Int
 
   genre   Genre  @relation(fields: [genreId], references: [id])
@@ -58,8 +60,9 @@ model Book {
 }
 
 model BookCopy {
-  id      String     @id @default(auto()) @map("_id") @db.ObjectId
-  stattus BookStatus @default(value: ACTIVE)
+  id     String     @id @default(auto()) @map("_id") @db.ObjectId
+  code   String
+  status BookStatus @default(value: ACTIVE)
 
   book   Book   @relation(fields: [bookId], references: [id])
   bookId String @map("book_id") @db.ObjectId
@@ -71,8 +74,9 @@ model BookCopy {
 }
 
 model Rental {
-  id       String   @id @default(auto()) @map("_id") @db.ObjectId
-  expireAt DateTime
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  rentDays   Int
+  returnDate DateTime
 
   bookCopy   BookCopy @relation(fields: [bookCopyId], references: [id])
   bookCopyId String   @db.ObjectId
