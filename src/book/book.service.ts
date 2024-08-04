@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class BookService {
@@ -10,9 +9,21 @@ export class BookService {
 
   create(createBookDto: CreateBookDto) {
     const { numberOfCopies } = createBookDto;
+    delete createBookDto.numberOfCopies;
 
+    const copies = [];
+    // We have to generate individual codes for the copies
+    for (let index = 1; index <= numberOfCopies; index++) {
+      copies.push({
+        code: `${createBookDto.title
+          .toLowerCase()
+          .replace(' ', '-')}-v${index}`,
+      });
+    }
+
+    // Creates books and copies
     return this.prisma.book.create({
-      data: createBookDto,
+      data: { ...createBookDto, BookCopy: { createMany: { data: copies } } },
     });
   }
 
