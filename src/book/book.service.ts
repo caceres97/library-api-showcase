@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { BookStatus } from '@prisma/client';
 
 @Injectable()
 export class BookService {
@@ -21,25 +22,62 @@ export class BookService {
       });
     }
 
-    // Creates books and copies
+    // Creates book and copies
     return this.prisma.book.create({
-      data: { ...createBookDto, BookCopy: { createMany: { data: copies } } },
+      data: { ...createBookDto, bookCopy: { createMany: { data: copies } } },
     });
   }
 
   findAll() {
-    return this.prisma.book.findMany();
+    return this.prisma.book.findMany({
+      select: {
+        id: true,
+        title: true,
+        publicationYear: true,
+        description: true,
+        genre: true,
+        author: true,
+        bookCopy: true,
+        _count: {
+          select: { bookCopy: { where: { status: BookStatus.ACTIVE } } },
+        },
+        createdAt: true,
+        updatedAt: true,
+      },
+    });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} book`;
+  findOne(id: string) {
+    return this.prisma.book.findFirstOrThrow({
+      select: {
+        id: true,
+        title: true,
+        publicationYear: true,
+        description: true,
+        genre: true,
+        author: true,
+        bookCopy: true,
+        _count: {
+          select: { bookCopy: { where: { status: BookStatus.ACTIVE } } },
+        },
+        createdAt: true,
+        updatedAt: true,
+      },
+      where: { id },
+    });
   }
 
-  update(id: number, updateBookDto: UpdateBookDto) {
-    return `This action updates a #${id} book`;
+  update(id: string, updateBookDto: UpdateBookDto) {
+    return this.prisma.book.update({ where: { id }, data: updateBookDto });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} book`;
+  remove(id: string) {
+    return Promise.all([
+      this.prisma.bookCopy.updateMany({
+        where: { bookId: id },
+        data: { status: BookStatus.DELETED },
+      }),
+      this.prisma.book.update({ where: { id }, data: { deleted: true } }),
+    ]);
   }
 }

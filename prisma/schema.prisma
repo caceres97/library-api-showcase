@@ -14,12 +14,16 @@ datasource db {
 }
 
 model User {
-  id   String    @id @default(auto()) @map("_id") @db.ObjectId
-  role UserRoles @default(value: STUDENT)
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  firstName String
+  lastName  String
+  email     String
+  password  String
+  role      UserRoles @default(value: STUDENT)
 
+  Rental    Rental[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
-  Rental    Rental[]
 }
 
 model Genre {
@@ -42,10 +46,11 @@ model Author {
 }
 
 model Book {
-  id              String @id @default(auto()) @map("_id") @db.ObjectId
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
   title           String
   description     String
   publicationYear Int
+  deleted         Boolean @default(false)
 
   genre   Genre  @relation(fields: [genreId], references: [id])
   genreId String @db.ObjectId
@@ -53,7 +58,7 @@ model Book {
   author   Author @relation(fields: [authorId], references: [id])
   authorId String @db.ObjectId
 
-  BookCopy BookCopy[]
+  bookCopy BookCopy[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt()
@@ -74,9 +79,10 @@ model BookCopy {
 }
 
 model Rental {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
-  rentDays   Int
-  returnDate DateTime
+  id           String     @id @default(auto()) @map("_id") @db.ObjectId
+  returnDate   DateTime
+  returnedDate DateTime?
+  status       RentStatus
 
   bookCopy   BookCopy @relation(fields: [bookCopyId], references: [id])
   bookCopyId String   @db.ObjectId
@@ -88,10 +94,16 @@ model Rental {
   updatedAt DateTime @updatedAt()
 }
 
+enum RentStatus {
+  RUNNING
+  CLOSED
+}
+
 enum BookStatus {
   RENTED
   ACTIVE
   INACTIVE
+  DELETED
 }
 
 enum UserRoles {

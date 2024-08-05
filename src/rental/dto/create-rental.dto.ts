@@ -5,8 +5,8 @@ export class CreateRentalDto {
   rentDays: number;
 
   @ApiProperty({ required: true })
-  bookCopyId: number;
+  bookCopyId: string;
 
   @ApiProperty({ required: true })
-  userId: number;
+  userId: string;
 }
