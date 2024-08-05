@@ -1,6 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { CreateRentalDto } from './dto/create-rental.dto';
-import { UpdateRentalDto } from './dto/update-rental.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { BookStatus, RentStatus } from '@prisma/client';
 import * as moment from 'moment';
@@ -23,7 +22,10 @@ export class RentalService {
       });
 
       if (userRentals === 5) {
-        throw new Error(`The student has reach the rental limit`);
+        throw new HttpException(
+          `The student has reach the rental limit`,
+          HttpStatus.BAD_REQUEST,
+        );
       }
 
       const bookCopy = await tx.bookCopy.findFirst({
@@ -32,8 +34,9 @@ export class RentalService {
       });
 
       if (bookCopy.status != BookStatus.ACTIVE) {
-        throw new Error(
+        throw new HttpException(
           `The current copy of book: ${bookCopy.book.title} is not available`,
+          HttpStatus.BAD_REQUEST,
         );
       }
 
@@ -56,26 +59,55 @@ export class RentalService {
 
   findAll() {
     return this.prisma.rental.findMany({
-      include: { bookCopy: { include: { book: true } } },
+      include: {
+        bookCopy: { include: { book: true } },
+        user: { select: { firstName: true, lastName: true, email: true } },
+      },
     });
   }
 
   findOne(id: string) {
     return this.prisma.rental.findFirstOrThrow({
-      include: { bookCopy: { include: { book: true } }, user: true },
+      include: {
+        bookCopy: { include: { book: true } },
+        user: { select: { firstName: true, lastName: true, email: true } },
+      },
       where: { id },
     });
   }
 
-  returnBook(id: string, updateRentalDto: UpdateRentalDto) {
+  returnBook(id: string) {
     /* 
       Another transaction to: 
       1. Change the status of the copy
-      2. 
+      2. Verify if is on time or late
     */
-  }
 
-  remove(id: string) {
-    return `This action removes a #${id} rental`;
+    return this.prisma.$transaction(async (tx) => {
+      const currentRent = await tx.rental.findFirstOrThrow({ where: { id } });
+
+      if (currentRent.status === RentStatus.CLOSED) {
+        throw new HttpException(
+          'Book was already returned',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+
+      await tx.bookCopy.update({
+        where: { id: currentRent.bookCopyId },
+        data: { status: BookStatus.ACTIVE },
+      });
+
+      const isLate = moment() >= moment(currentRent.returnDate);
+
+      return tx.rental.update({
+        where: { id },
+        data: {
+          status: RentStatus.CLOSED,
+          returnedDate: moment().toDate(),
+          wasReturnedLate: isLate,
+        },
+      });
+    });
   }
 }
