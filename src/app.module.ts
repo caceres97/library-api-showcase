@@ -1,22 +1,21 @@
 import { Module } from '@nestjs/common';
-import { BookController } from './book/book.controller';
-import { BookService } from './book/book.service';
-import { AuthorController } from './author/author.controller';
-import { AuthorService } from './author/author.service';
-import { GenreController } from './genre/genre.controller';
-import { GenreService } from './genre/genre.service';
-import { RentalController } from './rental/rental.controller';
-import { RentalService } from './rental/rental.service';
 import { PrismaModule } from './prisma/prisma.module';
+import { AuthModule } from './auth/auth.module';
+import { BookModule } from './book/book.module';
+import { GenreModule } from './genre/genre.module';
+import { RentalModule } from './rental/rental.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [PrismaModule],
-  controllers: [
-    BookController,
-    AuthorController,
-    GenreController,
-    RentalController,
+  imports: [
+    AuthModule,
+    BookModule,
+    GenreModule,
+    RentalModule,
+    UsersModule,
+    PrismaModule,
   ],
-  providers: [BookService, AuthorService, GenreService, RentalService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

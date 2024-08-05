@@ -20,6 +20,7 @@ model User {
   email     String
   password  String
   role      UserRoles @default(value: STUDENT)
+  deleted   Boolean   @default(false)
 
   Rental    Rental[]
   createdAt DateTime @default(now())

@@ -76,6 +76,10 @@ export class RentalService {
     });
   }
 
+  getuserRental(userId: string) {
+    return this.prisma.rental.findMany({ where: { userId } });
+  }
+
   returnBook(id: string) {
     /* 
       Another transaction to: 
