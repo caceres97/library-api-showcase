@@ -15,7 +15,6 @@ export class RentalService {
       1. The copy has to be active
       2. The limit of the rented books is 5 at the same time
     */
-
     return this.prisma.$transaction(async (tx) => {
       const { bookCopyId, userId, rentDays } = createRentalDto;
 

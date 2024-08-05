@@ -39,6 +39,7 @@ export class BookService {
         author: true,
         bookCopy: true,
         _count: {
+          // Count active copies
           select: { bookCopy: { where: { status: BookStatus.ACTIVE } } },
         },
         createdAt: true,

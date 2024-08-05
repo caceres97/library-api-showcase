@@ -79,10 +79,11 @@ model BookCopy {
 }
 
 model Rental {
-  id           String     @id @default(auto()) @map("_id") @db.ObjectId
-  returnDate   DateTime
-  returnedDate DateTime?
-  status       RentStatus
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  returnDate      DateTime
+  returnedDate    DateTime?
+  status          RentStatus
+  wasReturnedLate Boolean    @default(false)
 
   bookCopy   BookCopy @relation(fields: [bookCopyId], references: [id])
   bookCopyId String   @db.ObjectId
