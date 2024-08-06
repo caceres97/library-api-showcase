@@ -1,0 +1,950 @@
+{
+	"info": {
+		"_postman_id": "846f88f8-6a9f-4d09-8dcd-b9e18cafeb24",
+		"name": "ITO-Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7840456"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}Ï/books",
+							"host": [
+								"{{HOST}}Ï"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Book",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/books/66b00c708834ad1042619325",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"books",
+								"66b00c708834ad1042619325"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Single book",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/books/66b00c708834ad1042619325",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"books",
+										"66b00c708834ad1042619325"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1190"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4a6-ja975Dd8yvcfo3jhKjvGUwcL4xw\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Aug 2024 00:48:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66b00c708834ad1042619325\",\n    \"title\": \"The Stranger\",\n    \"publicationYear\": 1943,\n    \"description\": \"The story follows Meursault, an indifferent settler in French Algeria, who, weeks after his mother's funeral, kills an unnamed Arab man in Algiers.\",\n    \"genre\": {\n        \"id\": \"66aff9b21406e938f43ea868\",\n        \"name\": \"Philosophy\",\n        \"createdAt\": \"2024-08-04T21:59:13.934Z\",\n        \"updatedAt\": \"2024-08-04T21:59:13.934Z\"\n    },\n    \"author\": {\n        \"id\": \"66aff9c71406e938f43ea869\",\n        \"name\": \"Albert Camus\",\n        \"createdAt\": \"2024-08-04T21:59:35.496Z\",\n        \"updatedAt\": \"2024-08-04T21:59:35.496Z\"\n    },\n    \"bookCopy\": [\n        {\n            \"id\": \"66b00c708834ad1042619326\",\n            \"code\": \"the-stranger-v1\",\n            \"status\": \"ACTIVE\",\n            \"bookId\": \"66b00c708834ad1042619325\",\n            \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n            \"updatedAt\": \"2024-08-04T23:19:12.127Z\"\n        },\n        {\n            \"id\": \"66b00c708834ad1042619327\",\n            \"code\": \"the-stranger-v2\",\n            \"status\": \"ACTIVE\",\n            \"bookId\": \"66b00c708834ad1042619325\",\n            \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n            \"updatedAt\": \"2024-08-04T23:19:12.127Z\"\n        },\n        {\n            \"id\": \"66b00c708834ad1042619328\",\n            \"code\": \"the-stranger-v3\",\n            \"status\": \"ACTIVE\",\n            \"bookId\": \"66b00c708834ad1042619325\",\n            \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n            \"updatedAt\": \"2024-08-04T23:19:12.127Z\"\n        }\n    ],\n    \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n    \"updatedAt\": \"2024-08-04T23:30:47.922Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"The Stranger\",\n    \"description\": \"The story follows Meursault, an indifferent settler in French Algeria, who, weeks after his mother's funeral, kills an unnamed Arab man in Algiers.\",\n    \"publicationYear\": 1943,\n    \"genreId\": \"66aff9b21406e938f43ea868\",\n    \"authorId\": \"66aff9c71406e938f43ea869\",\n    \"numberOfCopies\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/books",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"The Stranger\",\n    \"description\": \"The story follows Meursault, an indifferent settler in French Algeria, who, weeks after his mother's funeral, kills an unnamed Arab man in Algiers.\",\n    \"publicationYear\": 1943,\n    \"genreId\": \"66aff9b21406e938f43ea868\",\n    \"authorId\": \"66aff9c71406e938f43ea869\",\n    \"numberOfCopies\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/books",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "396"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18c-iQJruWJ4DyzkFtXzNncNFLpQ9RQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Aug 2024 23:19:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66b00c708834ad1042619325\",\n    \"title\": \"The Stranger\",\n    \"description\": \"The story follows Meursault, an indifferent settler in French Algeria, who, weeks after his mother's funeral, kills an unnamed Arab man in Algiers.\",\n    \"publicationYear\": 1943,\n    \"genreId\": \"66aff9b21406e938f43ea868\",\n    \"authorId\": \"66aff9c71406e938f43ea869\",\n    \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n    \"updatedAt\": \"2024-08-04T23:19:12.127Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"title\": \"The Stranger\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/books/66b00c708834ad1042619325",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"books",
+								"66b00c708834ad1042619325"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n   \"title\": \"The Stranger\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/books/66b00c708834ad1042619325",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"books",
+										"66b00c708834ad1042619325"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "396"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18c-n29xcAvVAOQXDh4G3liWUwPxAGo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 04 Aug 2024 23:30:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66b00c708834ad1042619325\",\n    \"title\": \"The Stranger\",\n    \"description\": \"The story follows Meursault, an indifferent settler in French Algeria, who, weeks after his mother's funeral, kills an unnamed Arab man in Algiers.\",\n    \"publicationYear\": 1943,\n    \"genreId\": \"66aff9b21406e938f43ea868\",\n    \"authorId\": \"66aff9c71406e938f43ea869\",\n    \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n    \"updatedAt\": \"2024-08-04T23:30:47.922Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Rent",
+			"item": [
+				{
+					"name": "Get User Rentals",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CURRENT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/users/66b02dbd896b904ab09ef6d0/rentals",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"users",
+								"66b02dbd896b904ab09ef6d0",
+								"rentals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rental",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/rentals/66b02e3161388973a93c0715",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"rentals",
+								"66b02e3161388973a93c0715"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get rental",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/rentals/66b02e3161388973a93c0715",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"rentals",
+										"66b02e3161388973a93c0715"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1140"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"474-NWRaZmUA26D6T2RS6rdxth4nHI0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Aug 2024 04:56:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66b02e3161388973a93c0715\",\n    \"returnDate\": \"2024-08-09T01:43:13.004Z\",\n    \"returnedDate\": null,\n    \"status\": \"RUNNING\",\n    \"wasReturnedLate\": false,\n    \"bookCopyId\": \"66b00c708834ad1042619326\",\n    \"userId\": \"66b02dbd896b904ab09ef6d0\",\n    \"createdAt\": \"2024-08-05T01:43:12.668Z\",\n    \"updatedAt\": \"2024-08-05T01:43:12.668Z\",\n    \"bookCopy\": {\n        \"id\": \"66b00c708834ad1042619326\",\n        \"code\": \"the-stranger-v1\",\n        \"status\": \"RENTED\",\n        \"bookId\": \"66b00c708834ad1042619325\",\n        \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n        \"updatedAt\": \"2024-08-04T23:19:12.127Z\",\n        \"book\": {\n            \"id\": \"66b00c708834ad1042619325\",\n            \"title\": \"The Stranger\",\n            \"description\": \"The story follows Meursault, an indifferent settler in French Algeria, who, weeks after his mother's funeral, kills an unnamed Arab man in Algiers.\",\n            \"publicationYear\": 1943,\n            \"deleted\": false,\n            \"genreId\": \"66aff9b21406e938f43ea868\",\n            \"authorId\": \"66aff9c71406e938f43ea869\",\n            \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n            \"updatedAt\": \"2024-08-04T23:30:47.922Z\"\n        }\n    },\n    \"user\": {\n        \"id\": \"66b02dbd896b904ab09ef6d0\",\n        \"firstName\": \"Angel\",\n        \"lastName\": \"Caceres\\n\",\n        \"email\": \"caceres840#gmail.com\",\n        \"password\": \"1234\",\n        \"role\": \"STUDENT\",\n        \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n        \"updatedAt\": \"2024-08-04T23:19:12.127Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Rentals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/rentals",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"rentals"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Rentals",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/rentals",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"rentals"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "890"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"37a-bKNP6FQ6u49YEHb6RaGCBlTImIQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Aug 2024 01:47:04 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"66b02e3161388973a93c0715\",\n        \"returnDate\": \"2024-08-09T01:43:13.004Z\",\n        \"returnedDate\": null,\n        \"status\": \"RUNNING\",\n        \"bookCopyId\": \"66b00c708834ad1042619326\",\n        \"userId\": \"66b02dbd896b904ab09ef6d0\",\n        \"createdAt\": \"2024-08-05T01:43:12.668Z\",\n        \"updatedAt\": \"2024-08-05T01:43:12.668Z\",\n        \"bookCopy\": {\n            \"id\": \"66b00c708834ad1042619326\",\n            \"code\": \"the-stranger-v1\",\n            \"status\": \"RENTED\",\n            \"bookId\": \"66b00c708834ad1042619325\",\n            \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n            \"updatedAt\": \"2024-08-04T23:19:12.127Z\",\n            \"book\": {\n                \"id\": \"66b00c708834ad1042619325\",\n                \"title\": \"The Stranger\",\n                \"description\": \"The story follows Meursault, an indifferent settler in French Algeria, who, weeks after his mother's funeral, kills an unnamed Arab man in Algiers.\",\n                \"publicationYear\": 1943,\n                \"deleted\": false,\n                \"genreId\": \"66aff9b21406e938f43ea868\",\n                \"authorId\": \"66aff9c71406e938f43ea869\",\n                \"createdAt\": \"2024-08-04T23:19:12.127Z\",\n                \"updatedAt\": \"2024-08-04T23:30:47.922Z\"\n            }\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Rent book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rentDays\": 4,\n    \"bookCopyId\": \"66b00c708834ad1042619326\",\n    \"userId\": \"66b02dbd896b904ab09ef6d0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/rentals",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"rentals"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Rent book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"rentDays\": 4,\n    \"bookCopyId\": \"66b00c708834ad1042619326\",\n    \"userId\": \"66b02dbd896b904ab09ef6d0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/rentals",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"rentals"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "266"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10a-RU+XOTqYt5zAYngFxfbeB+6W76Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Aug 2024 01:43:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66b02e3161388973a93c0715\",\n    \"returnDate\": \"2024-08-09T01:43:13.004Z\",\n    \"returnedDate\": null,\n    \"status\": \"RUNNING\",\n    \"bookCopyId\": \"66b00c708834ad1042619326\",\n    \"userId\": \"66b02dbd896b904ab09ef6d0\",\n    \"createdAt\": \"2024-08-05T01:43:12.668Z\",\n    \"updatedAt\": \"2024-08-05T01:43:12.668Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Return book",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/rentals/66b02e3161388973a93c0715/return",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"rentals",
+								"66b02e3161388973a93c0715",
+								"return"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Return book",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/rentals/66b02e3161388973a93c0715/return",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"rentals",
+										"66b02e3161388973a93c0715",
+										"return"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "311"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"137-kX8ZHkRk9CX6TrK1rL9o9tqeU+g\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Aug 2024 05:21:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66b02e3161388973a93c0715\",\n    \"returnDate\": \"2024-08-09T01:43:13.004Z\",\n    \"returnedDate\": \"2024-08-05T05:21:44.547Z\",\n    \"status\": \"CLOSED\",\n    \"wasReturnedLate\": false,\n    \"bookCopyId\": \"66b00c708834ad1042619326\",\n    \"userId\": \"66b02dbd896b904ab09ef6d0\",\n    \"createdAt\": \"2024-08-05T01:43:12.668Z\",\n    \"updatedAt\": \"2024-08-05T05:21:43.216Z\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CURRENT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Karla\",\n    \"lastName\": \"Rico\",\n    \"email\": \"karlarico@gmail.com\",\n    \"password\": \"123456789\",\n    \"role\": \"STUDENT\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/users",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Karla\",\n    \"lastName\": \"Rico\",\n    \"email\": \"karlarico@gmail.com\",\n    \"password\": \"123456789\",\n    \"role\": \"STUDENT\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/users",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-cBJd1uP+wxhgcoCGQ6pFeCDcgl8\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Aug 2024 09:53:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"firstName\": \"Karla\",\n    \"lastName\": \"Rico\",\n    \"email\": \"karlarico@gmail.com\",\n    \"role\": \"STUDENT\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login (Get token)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"caceres840@gmail.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/auth/login",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CURRENT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/users/66b02dbd896b904ab09ef6d0",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"users",
+								"66b02dbd896b904ab09ef6d0"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get User",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/users/66b02dbd896b904ab09ef6d0",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"66b02dbd896b904ab09ef6d0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "447"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1bf-u4DKYp30QSYSHhVGOinUAKM9JEo\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Aug 2024 16:50:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"66b02dbd896b904ab09ef6d0\",\n    \"firstName\": \"Angel\",\n    \"lastName\": \"Caceres\",\n    \"email\": \"caceres840@gmail.com\",\n    \"role\": \"LIBRARIAN\",\n    \"Rental\": [\n        {\n            \"id\": \"66b02e3161388973a93c0715\",\n            \"returnDate\": \"2024-08-09T01:43:13.004Z\",\n            \"returnedDate\": \"2024-08-05T05:21:44.547Z\",\n            \"status\": \"CLOSED\",\n            \"wasReturnedLate\": false,\n            \"bookCopyId\": \"66b00c708834ad1042619326\",\n            \"userId\": \"66b02dbd896b904ab09ef6d0\",\n            \"createdAt\": \"2024-08-05T01:43:12.668Z\",\n            \"updatedAt\": \"2024-08-05T05:21:43.216Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{CURRENT_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/users",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/users",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "544"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"220-BU135D4m++PzCstcaY1P+ueio04\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Aug 2024 16:50:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"66b02dbd896b904ab09ef6d0\",\n        \"firstName\": \"Angel\",\n        \"lastName\": \"Caceres\",\n        \"email\": \"caceres840@gmail.com\",\n        \"Rental\": [\n            {\n                \"id\": \"66b02e3161388973a93c0715\",\n                \"returnDate\": \"2024-08-09T01:43:13.004Z\",\n                \"returnedDate\": \"2024-08-05T05:21:44.547Z\",\n                \"status\": \"CLOSED\",\n                \"wasReturnedLate\": false,\n                \"bookCopyId\": \"66b00c708834ad1042619326\",\n                \"userId\": \"66b02dbd896b904ab09ef6d0\",\n                \"createdAt\": \"2024-08-05T01:43:12.668Z\",\n                \"updatedAt\": \"2024-08-05T05:21:43.216Z\"\n            }\n        ]\n    },\n    {\n        \"id\": \"66b0a10c8768b085943a6146\",\n        \"firstName\": \"Karla\",\n        \"lastName\": \"Rico\",\n        \"email\": \"karlarico@gmail.com\",\n        \"Rental\": []\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "CURRENT_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNhY2VyZXM4NDBAZ21haWwuY29tIiwidXNlcklkIjoiNjZiMDJkYmQ4OTZiOTA0YWIwOWVmNmQwIiwicm9sZSI6IkxJQlJBUklBTiIsImlhdCI6MTcyMjg3NjMxOCwiZXhwIjoxNzIzMzA4MzE4fQ.s7y-IL6L9xPodXgxcXWnVCpmdeBYpO-Ey4-1BFVQd1w",
+			"type": "string"
+		},
+		{
+			"key": "HOST",
+			"value": "localhost:3000",
+			"type": "string"
+		}
+	]
+}
