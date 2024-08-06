@@ -13,6 +13,8 @@ Completed stuff:
 - Books creations and copies
 - User management
 - Author and Genres CRUDs
+- Good pr's to control the version
+- Setup the debugger
 
 Missing Stuff:
 
