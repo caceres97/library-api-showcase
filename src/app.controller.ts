@@ -9,7 +9,7 @@ import {
   Delete,
 } from '@nestjs/common';
 
-@Controller()
+@Controller('/')
 export class AppController {
   @Get()
   healthCheck() {
