@@ -1,10 +1,10 @@
-# ITO Library API REST | NestJs
+# Library API REST | NestJs
 
-Code Challenge by Angel Caceres
+By Angel Caceres
 
 ## Aclarations
 
-Hello there! due some timing problema I wasn't able to cover the 100% of the challenge as I wish, but I'll let you know the status, I hope we can work together soon :)
+This is just a taste of my work, isn't complete bc due of time, but checking the structure and services you'll be able to know more about my skills.
 
 Completed stuff:
 
@@ -19,11 +19,11 @@ Completed stuff:
 Missing Stuff:
 
 - Roles functionalities
-- Unit testing (the challenge not specify but I wanted to do it)
-- e2e testing (Same here)
+- Unit testing
+- e2e testing
 - Filters and pagination
 
-Some extra stuff:
+Some good stuff:
 
 - The user can rent only 5 books at the same time.
 - The getters for books include copies and rental stock
