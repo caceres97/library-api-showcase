@@ -15,6 +15,8 @@ Completed stuff:
 - Author and Genres CRUDs
 - Good pr's to control the version
 - Setup the debugger
+- Swagger implemented
+- Postman collection with variables.
 
 Missing Stuff:
 
