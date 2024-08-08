@@ -57,7 +57,7 @@ $ npm run start:prod
 
 - [Healthcheck](https://clownfish-app-jprkw.ondigitalocean.app)
 - [https://clownfish-app-jprkw.ondigitalocean.app/docs](https://clownfish-app-jprkw.ondigitalocean.app/docs)
-- [Postman on project](https://github.com/caceres97/ito-library-api/blob/main/ITO-Library.postman_collection.json)
+- [Postman on project]([https://github.com/caceres97/ito-library-api/blob/main/ITO-Library.postman_collection.json](https://github.com/caceres97/library-api-showcase/blob/main/Library.postman_collection.json))
 
 ## Stay in touch
 
